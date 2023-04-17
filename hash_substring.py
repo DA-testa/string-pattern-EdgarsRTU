@@ -1,7 +1,7 @@
 # python3
 
 def read_input():
-     fileorno = input()
+    fileorno = input()
     if "I" in fileorno or "i" in fileorno:
         pattern = input().rstrip()
         text = input().rstrip()
@@ -12,13 +12,12 @@ def read_input():
                 pattern = f.readline().rstrip()
                 text = f.readline().rstrip()
     return pattern, text
-    
 
 def print_occurrences(output):
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-     prime = 1
+    prime = 1
     p_len, t_len = len(pattern), len(text)
     pattern_hash = sum(ord(pattern[i]) * pow(prime, i) for i in range(p_len))
     text_hash = sum(ord(text[i]) * pow(prime, i) for i in range(p_len))
@@ -30,7 +29,6 @@ def get_occurrences(pattern, text):
         if i < t_len - p_len:
             text_hash = (text_hash - ord(text[i])) / prime + ord(text[i+p_len]) * pow(prime, p_len-1)
     return occurrences
-    return [0]
-if __name__ == '__main__':
-    print_occurrences(get_occurrences(*read_input()))
 
+if name == 'main':
+    print_occurrences(get_occurrences(*read_input()))
