@@ -1,5 +1,3 @@
-# python3
-
 def read_input():
     fileorno = input()
     if "I" in fileorno or "i" in fileorno:
@@ -30,5 +28,5 @@ def get_occurrences(pattern, text):
             text_hash = (text_hash - ord(text[i])) / prime + ord(text[i+p_len]) * pow(prime, p_len-1)
     return occurrences
 
-if name == 'main':
+if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
