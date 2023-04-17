@@ -16,16 +16,16 @@ def print_occurrences(output):
 
 def get_occurrences(pattern, text):
     prime = 1
-    p_len, t_len = len(pattern), len(text)
-    pattern_hash = sum(ord(pattern[i]) * pow(prime, i) for i in range(p_len))
-    text_hash = sum(ord(text[i]) * pow(prime, i) for i in range(p_len))
+    i_len, j_len = len(pattern), len(text)
+    pattern_hash = sum(ord(pattern[i]) * pow(prime, i) for i in range(i_len))
+    text_hash = sum(ord(text[i]) * pow(prime, i) for i in range(i_len))
     occurrences = []
-    for i in range(t_len - p_len + 1):
+    for i in range(j_len - i_len + 1):
         if pattern_hash == text_hash:
-            if pattern == text[i:i+p_len]:
+            if pattern == text[i:i+i_len]:
                 occurrences.append(i)
-        if i < t_len - p_len:
-            text_hash = (text_hash - ord(text[i])) / prime + ord(text[i+p_len]) * pow(prime, p_len-1)
+        if i < j_len - i_len:
+            text_hash = (text_hash - ord(text[i])) / prime + ord(text[i+i_len]) * pow(prime, i_len-1)
     return occurrences
 
 if __name__ == '__main__':
